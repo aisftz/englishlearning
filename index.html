@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn English Online</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .logo {
+      font-family: 'Pacifico', cursive;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-b from-sky-100 to-white text-gray-800">
+  <header class="relative bg-sky-500 text-white py-6 shadow-xl sticky top-0 z-50">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-6">
+      <h1 class="logo text-3xl md:text-4xl font-bold mb-2 md:mb-0 drop-shadow-sm">English Learning Hub</h1>
+      <nav class="space-x-6 text-lg">
+        <a href="#home" class="hover:underline hover:text-yellow-200 transition">Home</a>
+        <a href="#lessons" class="hover:underline hover:text-yellow-200 transition">Lessons</a>
+        <a href="#contact" class="hover:underline hover:text-yellow-200 transition">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="py-24 text-center bg-white animate-fade-in">
+    <div class="container mx-auto max-w-2xl">
+      <h2 class="text-5xl font-extrabold mb-6 text-sky-700">Welcome to Your English Learning Journey</h2>
+      <p class="text-lg text-gray-600 mb-8">Explore interactive lessons, practical vocabulary, and real-life conversations to improve your English skills every day!</p>
+      <a href="#lessons" class="inline-block bg-gradient-to-r from-sky-600 to-blue-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform duration-300">Start Learning</a>
+    </div>
+  </section>
+
+  <section id="lessons" class="py-24 bg-sky-50">
+    <div class="container mx-auto">
+      <h3 class="text-4xl font-bold mb-14 text-center text-sky-800">Featured Lessons</h3>
+      <div class="grid md:grid-cols-3 gap-10">
+        <button onclick="window.location.href='#vocabulary'" class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-transform hover:-translate-y-2 text-left">
+          <h4 class="text-2xl font-semibold mb-3 text-sky-700">Vocabulary</h4>
+          <p class="text-gray-600">Learn essential words and phrases used in everyday life with visual aids and examples.</p>
+        </button>
+        <button onclick="window.location.href='#grammar'" class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-transform hover:-translate-y-2 text-left">
+          <h4 class="text-2xl font-semibold mb-3 text-sky-700">Grammar</h4>
+          <p class="text-gray-600">Understand English sentence structure and grammar rules through clear, interactive examples.</p>
+        </button>
+        <button onclick="window.location.href='#conversation'" class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-transform hover:-translate-y-2 text-left">
+          <h4 class="text-2xl font-semibold mb-3 text-sky-700">Conversation</h4>
+          <p class="text-gray-600">Practice speaking with real-life dialogues and useful expressions for daily communication.</p>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section id="vocabulary" class="py-24 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-4xl font-bold text-center text-sky-700 mb-10">100 Vocabulary Dasar</h2>
+      <input type="text" id="searchInput" placeholder="Cari kata..." class="mb-8 p-4 border border-gray-300 rounded w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500" />
+      <div id="vocabList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="py-10 bg-sky-50">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold text-sky-700 mb-6">Vocabulary Quiz</h2>
+      <div id="quiz-box" class="bg-white p-6 rounded shadow max-w-xl mx-auto">
+        <p id="question" class="text-xl font-semibold mb-4"></p>
+        <div id="options" class="space-y-3 mb-4"></div>
+        <div id="feedback" class="text-lg font-semibold py-2 rounded hidden"></div>
+        <button onclick="nextQuestion()" class="mt-4 bg-sky-500 text-white px-4 py-2 rounded hover:bg-sky-600">Next</button>
+        <p id="score" class="mt-6 text-lg text-gray-700"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="grammar" class="py-24 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-4xl font-bold text-center text-sky-700 mb-10">Grammar Basics</h2>
+      <div class="space-y-8">
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <h3 class="text-2xl font-semibold text-sky-700 mb-2">Simple Present Tense</h3>
+          <p class="text-gray-700 mb-2">Digunakan untuk menyatakan kebiasaan atau fakta umum.</p>
+          <p class="mb-1"><strong>Rumus:</strong> Subject + V1 (s/es untuk he/she/it)</p>
+          <p><strong>Contoh:</strong> She walks to school every day. / The sun rises in the east.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <h3 class="text-2xl font-semibold text-sky-700 mb-2">Present Continuous Tense</h3>
+          <p class="text-gray-700 mb-2">Digunakan untuk aksi yang sedang berlangsung sekarang.</p>
+          <p class="mb-1"><strong>Rumus:</strong> Subject + am/is/are + V-ing</p>
+          <p><strong>Contoh:</strong> I am studying English now. / They are playing outside.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <h3 class="text-2xl font-semibold text-sky-700 mb-2">Simple Past Tense</h3>
+          <p class="text-gray-700 mb-2">Digunakan untuk aksi yang terjadi di masa lalu.</p>
+          <p class="mb-1"><strong>Rumus:</strong> Subject + V2 (past form)</p>
+          <p><strong>Contoh:</strong> We visited Bali last year. / He cooked dinner yesterday.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <h3 class="text-2xl font-semibold text-sky-700 mb-2">Present Perfect Tense</h3>
+          <p class="text-gray-700 mb-2">Digunakan untuk menyatakan aksi yang telah terjadi dan masih relevan dengan saat ini.</p>
+          <p class="mb-1"><strong>Rumus:</strong> Subject + has/have + V3 (past participle)</p>
+          <p><strong>Contoh:</strong> I have finished my homework. / She has lived here for five years.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <h3 class="text-2xl font-semibold text-sky-700 mb-2">Simple Future Tense</h3>
+          <p class="text-gray-700 mb-2">Digunakan untuk menyatakan kejadian yang akan terjadi di masa depan.</p>
+          <p class="mb-1"><strong>Rumus:</strong> Subject + will + V1</p>
+          <p><strong>Contoh:</strong> I will visit my grandma tomorrow. / They will start the project next week.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <h3 class="text-2xl font-semibold text-sky-700 mb-2">Past Continuous Tense</h3>
+          <p class="text-gray-700 mb-2">Digunakan untuk aksi yang sedang berlangsung pada waktu tertentu di masa lalu.</p>
+          <p class="mb-1"><strong>Rumus:</strong> Subject + was/were + V-ing</p>
+          <p><strong>Contoh:</strong> I was watching TV when you called. / They were studying at 8 PM last night.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <h3 class="text-2xl font-semibold text-sky-700 mb-2">Future Continuous Tense</h3>
+          <p class="text-gray-700 mb-2">Digunakan untuk menunjukkan aksi yang akan sedang berlangsung di waktu tertentu di masa depan.</p>
+          <p class="mb-1"><strong>Rumus:</strong> Subject + will be + V-ing</p>
+          <p><strong>Contoh:</strong> I will be traveling at this time next week. / She will be working on her thesis tomorrow morning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="grammar-quiz" class="py-24 bg-sky-50">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-4xl font-bold text-center text-sky-700 mb-10">Grammar Quiz</h2>
+      <div class="bg-sky-100 p-6 rounded-lg shadow-md">
+        <div id="grammarQuiz">
+        </div>
+        <p id="grammarResult" class="mt-4 text-lg font-semibold"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="conversation" class="py-24 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-4xl font-bold text-center text-sky-700 mb-10">Real-Life Conversation Scenarios</h2>
+      <p class="text-center text-gray-600 mb-12">Belajar bahasa Inggris lewat contoh percakapan yang sering dipakai di kehidupan sehari-hari. Yuk, pahami konteks dan ekspresi yang digunakan!</p>
+      <div class="grid gap-10 md:grid-cols-2">
+        <div class="bg-sky-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+          <h3 class="text-xl font-semibold text-sky-800 mb-2">👋 Greeting a Friend</h3>
+          <p class="mb-1"><strong>A:</strong> Hey! Long time no see. How have you been?</p>
+          <p class="mb-1"><strong>B:</strong> I’m doing well, thanks! How about you?</p>
+          <p class="text-sm text-gray-500 mt-2">✨ Ekspresi penting: <em>Long time no see</em> = sudah lama nggak ketemu</p>
+        </div>
+        <div class="bg-sky-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+          <h3 class="text-xl font-semibold text-sky-800 mb-2">🍽️ Ordering at a Restaurant</h3>
+          <p class="mb-1"><strong>Waiter:</strong> Are you ready to order?</p>
+          <p class="mb-1"><strong>You:</strong> Yes, I’ll have the grilled chicken and a lemonade, please.</p>
+          <p class="text-sm text-gray-500 mt-2">✨ Ekspresi penting: <em>I’ll have...</em> = saya mau pesan...</p>
+        </div>
+        <div class="bg-sky-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+          <h3 class="text-xl font-semibold text-sky-800 mb-2">🛍️ Asking in a Store</h3>
+          <p class="mb-1"><strong>You:</strong> Excuse me, how much is this jacket?</p>
+          <p class="mb-1"><strong>Seller:</strong> It’s $35. Would you like to try it on?</p>
+          <p class="text-sm text-gray-500 mt-2">✨ Ekspresi penting: <em>Try it on</em> = coba pakai</p>
+        </div>
+        <div class="bg-sky-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
+          <h3 class="text-xl font-semibold text-sky-800 mb-2">📞 Making a Phone Call</h3>
+          <p class="mb-1"><strong>You:</strong> Hi, may I speak to Mr. David, please?</p>
+          <p class="mb-1"><strong>Receptionist:</strong> Sure, hold on a moment.</p>
+          <p class="text-sm text-gray-500 mt-2">✨ Ekspresi penting: <em>Hold on</em> = tunggu sebentar</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="conversation-practice" class="py-24 bg-sky-50">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-4xl font-bold text-center text-sky-800 mb-10">Interactive Conversation Practice</h2>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <p class="mb-4" id="botLine"><strong>Bot:</strong> You walk into a coffee shop and see someone you know. What do you say?</p>
+        <div id="optionsContainer" class="space-y-3">
+          <button onclick="chooseResponse(1)" class="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700 block w-full text-left">B. What are you doing here?</button>
+          <button onclick="chooseResponse(2)" class="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700 block w-full text-left">C. Give me your coffee.</button>
+          <button onclick="chooseResponse(3)" class="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700 block w-full text-left">A. Hey! Fancy seeing you here!</button>
+        </div>
+        <div id="conversationFeedback" class="mt-6 text-lg font-semibold text-gray-700"></div>
+        <button id="nextBtn" onclick="nextScenario()" class="mt-6 bg-sky-500 text-white px-6 py-2 rounded hidden hover:bg-sky-600">Next</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-24 bg-white">
+    <div class="container mx-auto max-w-xl">
+      <h3 class="text-4xl font-bold mb-8 text-center text-sky-800">Get in Touch</h3>
+      <form class="space-y-6">
+        <input type="text" placeholder="Your Name" class="w-full p-4 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-sky-500" />
+        <input type="email" placeholder="Your Email" class="w-full p-4 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-sky-500" />
+        <textarea placeholder="Your Message" rows="5" class="w-full p-4 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-sky-500"></textarea>
+        <button type="submit" class="w-full bg-sky-600 text-white px-4 py-4 rounded-md font-semibold hover:bg-sky-700 transition">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="bg-sky-600 text-white mt-16">
+    <div class="container mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-start gap-8">
+      <div>
+        <h2 class="logo text-3xl font-bold mb-3">English Learning Hub</h2>
+        <p class="text-sm max-w-sm">Belajar bahasa Inggris dengan cara yang menyenangkan, interaktif, dan mudah dipahami. Mulai dari vocabulary, grammar, sampai conversation!</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-2">Quick Links</h3>
+        <ul class="space-y-1 text-sm">
+          <li><a href="#home" class="hover:underline">Home</a></li>
+          <li><a href="#lessons" class="hover:underline">Lessons</a></li>
+          <li><a href="#vocabulary" class="hover:underline">Vocabulary</a></li>
+          <li><a href="#grammar" class="hover:underline">grammar</a></li>
+          <li><a href="#conversation" class="hover:underline">Conversation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-2">Contact</h3>
+        <p class="text-sm">Email: <a href="mailto:support@learnenglish.com" class="underline">nurhabibahsyafitri@student.polmed.ac.id</a></p>
+        <p class="text-sm">Phone: +62 819 9171 6036</p>
+        <p class="text-sm">Instagram: <a href="#" class="underline">@nuraisyaftri_</a></p>
+      </div>
+    </div>
+    <div class="bg-sky-700 text-center py-4 text-sm mt-6">
+      &copy; 2025 English Learning Hub. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    const vocab = [
+      ["Apple", "Apel"], ["Book", "Buku"], ["Cat", "Kucing"], ["Dog", "Anjing"], ["Eat", "Makan"],
+      ["Fast", "Cepat"], ["Good", "Baik"], ["Happy", "Senang"], ["Ice", "Es"], ["Jump", "Lompat"],
+      ["Kind", "Baik hati"], ["Love", "Cinta"], ["Moon", "Bulan"], ["Night", "Malam"], ["Open", "Buka"],
+      ["Pen", "Pulpen"], ["Queen", "Ratu"], ["Run", "Lari"], ["Sun", "Matahari"], ["Tree", "Pohon"],
+      ["Umbrella", "Payung"], ["Very", "Sangat"], ["Water", "Air"], ["Xylophone", "Silofon"], ["Yellow", "Kuning"],
+      ["Zoo", "Kebun binatang"], ["Animal", "Hewan"], ["Bread", "Roti"], ["Chair", "Kursi"], ["Dance", "Menari"],
+      ["Elephant", "Gajah"], ["Fish", "Ikan"], ["Grapes", "Anggur"], ["House", "Rumah"], ["Island", "Pulau"],
+      ["Juice", "Jus"], ["Key", "Kunci"], ["Lion", "Singa"], ["Milk", "Susu"], ["Nose", "Hidung"],
+      ["Orange", "Jeruk"], ["Pencil", "Pensil"], ["Quiet", "Diam"], ["Rabbit", "Kelinci"], ["School", "Sekolah"],
+      ["Table", "Meja"], ["Vegetable", "Sayur"], ["Window", "Jendela"], ["Yard", "Halaman"], ["Zebra", "Zebra"],
+      ["Act", "Bertindak"], ["Brave", "Berani"], ["Clean", "Bersih"], ["Drive", "Menyetir"], ["Egg", "Telur"],
+      ["Family", "Keluarga"], ["Game", "Permainan"], ["Help", "Membantu"], ["Idea", "Ide"], ["Job", "Pekerjaan"],
+      ["King", "Raja"], ["Laugh", "Tertawa"], ["Mountain", "Gunung"], ["Name", "Nama"], ["Ocean", "Laut"],
+      ["Play", "Bermain"], ["Question", "Pertanyaan"], ["Rain", "Hujan"], ["Sing", "Bernyanyi"], ["Talk", "Berbicara"],
+      ["Use", "Menggunakan"], ["Visit", "Mengunjungi"], ["Wait", "Menunggu"], ["X-ray", "Sinar-X"], ["Yawn", "Menguap"],
+      ["Zero", "Nol"], ["Above", "Di atas"], ["Behind", "Di belakang"], ["Close", "Menutup"], ["Drop", "Menjatuhkan"],
+      ["Empty", "Kosong"], ["Full", "Penuh"], ["Green", "Hijau"], ["Hot", "Panas"], ["Inside", "Di dalam"],
+      ["Jump", "Melompat"], ["Kick", "Menendang"], ["Low", "Rendah"], ["More", "Lebih"], ["New", "Baru"],
+      ["Old", "Tua"], ["Push", "Mendorong"], ["Red", "Merah"], ["Small", "Kecil"], ["Tall", "Tinggi"],
+      ["Under", "Di bawah"], ["Voice", "Suara"], ["Warm", "Hangat"], ["Young", "Muda"]
+    ];
+
+    const vocabList = document.getElementById('vocabList');
+    const searchInput = document.getElementById('searchInput');
+
+    function renderList(filter = '') {
+      vocabList.innerHTML = '';
+      vocab
+        .filter(([eng, ind]) =>
+          eng.toLowerCase().includes(filter.toLowerCase()) ||
+          ind.toLowerCase().includes(filter.toLowerCase())
+        )
+        .forEach(([eng, ind]) => {
+          const item = document.createElement('div');
+          item.className = "p-4 bg-sky-100 rounded shadow hover:bg-sky-200 transition";
+          item.innerHTML = `
+            <div class="flex items-center justify-between">
+              <div>
+                <strong>${eng}</strong><br>
+                <span class="text-gray-700">${ind}</span>
+              </div>
+              <button onclick="speak('${eng}')" class="text-sky-600 text-2xl hover:bg-gray-100">🔊</button>
+            </div>
+          `;
+          vocabList.appendChild(item);
+        });
+    }
+
+    function speak(text) {
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'en-US';
+      speechSynthesis.speak(utter);
+    }
+
+    searchInput.addEventListener('input', e => renderList(e.target.value));
+    renderList();
+
+    const grammarQuestions = [
+      {
+        question: "Choose the correct sentence:",
+        options: [
+          { text: "She go to school every day.", correct: false },
+          { text: "She goes to school every day.", correct: true },
+          { text: "She going to school every day.", correct: false }
+        ]
+      },
+      {
+        question: "Which one is grammatically correct?",
+        options: [
+          { text: "He don't like pizza.", correct: false },
+          { text: "He doesn't like pizza.", correct: true },
+          { text: "He isn't like pizza.", correct: false }
+        ]
+      },
+      {
+        question: "Which sentence is in present continuous tense?",
+        options: [
+          { text: "They plays soccer.", correct: false },
+          { text: "They are playing soccer.", correct: true },
+          { text: "They play soccer.", correct: false }
+        ]
+      },
+      {
+        question: "Which one uses the correct past tense?",
+        options: [
+          { text: "She eat breakfast this morning.", correct: false },
+          { text: "She ate breakfast this morning.", correct: true },
+          { text: "She eaten breakfast this morning.", correct: false }
+        ]
+      },
+      {
+        question: "What is the correct question form?",
+        options: [
+          { text: "You like coffee?", correct: false },
+          { text: "Do you like coffee?", correct: true },
+          { text: "Does you like coffee?", correct: false }
+        ]
+      }
+    ];
+
+    let currentGrammarIndex = 0;
+
+    function showGrammarQuestion() {
+      const container = document.getElementById("grammarQuiz");
+      const q = grammarQuestions[currentGrammarIndex];
+
+      container.innerHTML = `
+        <p class="text-lg mb-4">${q.question}</p>
+        ${q.options.map((opt, i) => `
+          <label class="block mb-2">
+            <input type="radio" name="grammar" value="${i}" class="mr-2">
+            ${opt.text}
+          </label>
+        `).join('')}
+        <button onclick="checkGrammarAnswer()" class="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700 mt-2">Submit</button>
+        <p id="grammarResult" class="mt-4 text-lg font-semibold"></p>
+      `;
+    }
+
+    function checkGrammarAnswer() {
+      const selected = document.querySelector('input[name="grammar"]:checked');
+      const result = document.getElementById("grammarResult");
+
+      if (!selected) {
+        result.textContent = "Please select an option.";
+        result.className = "text-yellow-600 mt-4 font-semibold";
+        return;
+      }
+
+      const isCorrect = grammarQuestions[currentGrammarIndex].options[selected.value].correct;
+
+      if (isCorrect) {
+        result.textContent = "✅ Correct! Great job!";
+        result.className = "text-green-600 mt-4 font-semibold";
+      } else {
+        result.textContent = "❌ Oops! That's not right.";
+        result.className = "text-red-600 mt-4 font-semibold";
+      }
+
+      if (currentGrammarIndex < grammarQuestions.length - 1) {
+        const btn = document.createElement("button");
+        btn.textContent = "Next Question";
+        btn.className = "mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600";
+        btn.onclick = () => {
+          currentGrammarIndex++;
+          showGrammarQuestion();
+        };
+        result.parentNode.appendChild(btn);
+      }
+    }
+    showGrammarQuestion();
+
+    function respond(feeling) {
+      const result = document.getElementById('conversationResult');
+      if (feeling === 'good') {
+        result.textContent = 'Bot: That’s great to hear!';
+      } else {
+        result.textContent = 'Bot: I’m sorry to hear that. Hope your day gets better!';
+      }
+    }
+
+    const quizData = [
+      { word: "apple", correct: "apel", options: ["apel", "jeruk", "pisang", "semangka"] },
+      { word: "book", correct: "buku", options: ["meja", "kursi", "buku", "kertas"] },
+      { word: "car", correct: "mobil", options: ["sepeda", "motor", "mobil", "kereta"] },
+      { word: "cat", correct: "kucing", options: ["anjing", "kuda", "kucing", "burung"] },
+      { word: "house", correct: "rumah", options: ["rumah", "gedung", "sekolah", "mobil"] },
+      { word: "milk", correct: "susu", options: ["susu", "air", "jus", "teh"] },
+      { word: "sun", correct: "matahari", options: ["matahari", "bulan", "bintang", "awan"] },
+      { word: "rain", correct: "hujan", options: ["hujan", "salju", "badai", "kabut"] },
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function showQuestion() {
+      const q = quizData[currentQuestion];
+      document.getElementById("question").textContent = `Apa arti dari kata "${q.word}"?`;
+
+      const shuffledOptions = q.options.sort(() => Math.random() - 0.5);
+      const optionsDiv = document.getElementById("options");
+      optionsDiv.innerHTML = "";
+
+      shuffledOptions.forEach(option => {
+        const btn = document.createElement("button");
+        btn.textContent = option;
+        btn.className = "block w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 rounded";
+        btn.onclick = () => checkAnswer(option);
+        optionsDiv.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(answer) {
+      const correct = quizData[currentQuestion].correct;
+      const feedbackBox = document.getElementById("feedback");
+      if (answer === correct) {
+        feedbackBox.textContent = "✅ Jawaban benar!";
+        feedbackBox.className = "bg-green-100 text-green-800 text-lg font-semibold py-2 rounded";
+        score++;
+      } else {
+        feedbackBox.textContent = `❌ Salah! Jawaban yang benar: ${correct}`;
+        feedbackBox.className = "bg-red-100 text-red-800 text-lg font-semibold py-2 rounded";
+      }
+      feedbackBox.classList.remove("hidden");
+      document.getElementById("score").textContent = `Skor Anda: ${score} / ${quizData.length}`;
+      document.querySelectorAll("#options button").forEach(btn => btn.disabled = true);
+    }
+
+    function nextQuestion() {
+      currentQuestion++;
+      document.getElementById("feedback").classList.add("hidden");
+      if (currentQuestion < quizData.length) {
+        showQuestion();
+      } else {
+        document.getElementById("quiz-box").innerHTML = `
+          <h3 class="text-2xl font-bold text-sky-700 mb-4">Kuis Selesai!</h3>
+          <p class="text-xl">Skor akhir Anda adalah ${score} dari ${quizData.length}</p>
+        `;
+      }
+    }
+    showQuestion();
+
+    const scenarios = [
+      {
+        question: "You walk into a coffee shop and see someone you know. What do you say?",
+        options: [
+          { text: "What are you doing here?", feedback: "😐 Hmm... sounds a bit suspicious. Try being more friendly." },
+          { text: "Give me your coffee.", feedback: "😅 That’s a bit rude. Let's be polite!" },
+          { text: "Hey! Fancy seeing you here!", feedback: "👍 Great! That's friendly and natural." },
+        ]
+      },
+      {
+        question: "You meet someone new. How do you start the conversation?",
+        options: [
+          { text: "What's your name?", feedback: "👍 Nice! That’s a great way to start." },
+          { text: "Do you like pizza?", feedback: "🍕 Funny, but maybe too random for an intro." },
+          { text: "Are you rich?", feedback: "🚫 Whoa, that’s too personal!" },
+        ]
+      },
+      {
+        question: "You're lost and need directions. What do you say?",
+        options: [
+          { text: "Hey! Where's the library?", feedback: "😐 A bit too direct. Try adding 'please' or 'excuse me'." },
+          { text: "Excuse me, can you help me find the library?", feedback: "✅ Very polite and clear. Well done!" },
+          { text: "Yo! Library?", feedback: "😅 Too casual. Use full sentences." },
+        ]
+      },
+      {
+        question: "You want to buy something at a store. What do you say?",
+        options: [
+          { text: "How much is this?", feedback: "✅ Perfect! That's polite and clear." },
+          { text: "Give me the price.", feedback: "😐 A bit too direct. Try asking nicely." },
+          { text: "Is this free?", feedback: "😅 Funny, but not realistic!" }
+        ]
+      },
+      {
+        question: "You want to thank someone. What do you say?",
+        options: [
+          { text: "Give you money later.", feedback: "😐 Not the best way to show gratitude." },
+          { text: "Thanks!", feedback: "👍 Simple and polite." },
+          { text: "Why did you help me?", feedback: "😅 That's not how we thank people." }
+        ]
+      }
+
+    ];
+
+    let current = 0;
+
+    function chooseResponse(index) {
+      const feedback = scenarios[current].options[index - 1].feedback;
+      document.getElementById("conversationFeedback").innerText = feedback;
+      document.getElementById("nextBtn").classList.remove("hidden");
+    }
+
+    function nextScenario() {
+      current++;
+      if (current < scenarios.length) {
+        const scene = scenarios[current];
+        document.getElementById("botLine").innerHTML = `<strong>Bot:</strong> ${scene.question}`;
+        const optionsHTML = scene.options.map((opt, i) =>
+          `<button onclick="chooseResponse(${i + 1})" class="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700 block w-full text-left">${String.fromCharCode(65 + i)}. ${opt.text}</button>`
+        ).join('');
+        document.getElementById("optionsContainer").innerHTML = optionsHTML;
+        document.getElementById("conversationFeedback").innerText = '';
+        document.getElementById("nextBtn").classList.add("hidden");
+      } else {
+        document.getElementById("botLine").innerHTML = `<strong>Bot:</strong> You've completed the practice! 🎉 Great job!`;
+        document.getElementById("optionsContainer").innerHTML = '';
+        document.getElementById("conversationFeedback").innerText = '';
+        document.getElementById("nextBtn").classList.add("hidden");
+      }
+    }
+
+  </script>
+</body>
+</html>
