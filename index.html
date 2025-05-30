@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learn English Online</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="shortcut icon" href="img/—Pngtree—global education logo with graduation_20799515.png" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet" />
@@ -65,20 +66,6 @@
       transition: width 0.4s ease;
     }
     
-    .dark-mode {
-      background-color: #0f172a;
-      color: #e2e8f0;
-    }
-    
-    .dark-mode .card {
-      background-color: #1e293b;
-      color: #cbd5e1;
-    }
-    
-    .dark-mode .section-title:after {
-      background: var(--secondary);
-    }
-    
     .bookmarked {
       color: #f59e0b;
     }
@@ -106,23 +93,132 @@
       transform: translateY(-5px);
       box-shadow: 0 6px 20px rgba(14, 165, 233, 0.6);
     }
+    
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      background: #f1f5f9;
+      border-radius: 10px;
+      padding: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .tab {
+      padding: 0.8rem 1.5rem;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-align: center;
+      flex: 1;
+      min-width: 120px;
+    }
+    
+    .tab.active {
+      background: #0ea5e9;
+      color: white;
+      box-shadow: 0 4px 6px rgba(14, 165, 233, 0.3);
+    }
+    
+    .grammar-content {
+      display: none;
+      animation: fadeIn 0.5s ease-out;
+    }
+    
+    .grammar-content.active {
+      display: block;
+    }
+    
+    .usage-badge {
+      display: inline-block;
+      background: #fde68a;
+      color: #92400e;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin: 0.5rem 0;
+      font-weight: 500;
+    }
+    
+    .example-card {
+      background: #eff6ff;
+      border-left: 3px solid #0ea5e9;
+      padding: 1rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1rem 0;
+    }
+    
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+    
+    .comparison-table th, 
+    .comparison-table td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .comparison-table th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+    }
+    
+    .comparison-table tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    
+    .grammar-visual {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background: #f0f9ff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 1.5rem 0;
+    }
+    
+    .grammar-visual-item {
+      text-align: center;
+      padding: 1rem;
+    }
+    
+    .grammar-visual-item .visual-box {
+      width: 70px;
+      height: 70px;
+      background: white;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
+    @media (max-width: 768px) {
+      .tabs {
+        flex-direction: column;
+      }
+      
+      .grammar-visual {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
-
 <body class="bg-gradient-to-b from-sky-50 to-white text-gray-800 transition-colors duration-300">
-  <!-- Floating Action Button -->
-  <div class="floating-btn" id="theme-toggle">
-    <i class="fas fa-moon"></i>
-  </div>
-  
   <header class="relative bg-sky-600 text-white py-4 shadow-xl sticky top-0 z-50">
     <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-6">
       <div class="flex justify-between w-full md:w-auto items-center">
         <h1 class="logo text-3xl md:text-4xl font-bold drop-shadow-sm">English Learning Hub</h1>
         <div class="flex items-center space-x-4">
-          <button id="theme-toggle-mobile" class="md:hidden text-white">
+          <!-- <button id="theme-toggle-mobile" class="md:hidden text-white">
             <i class="fas fa-moon"></i>
-          </button>
+          </button> -->
           <div class="md:hidden flex items-center">
             <button id="burger-icon" class="text-white focus:outline-none">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -131,8 +227,7 @@
             </button>
           </div>
         </div>
-      </div>
-      
+      </div>      
       <nav class="hidden md:flex space-x-6 text-lg">
         <a href="#home" class="hover:underline hover:text-yellow-200 transition">Home</a>
         <a href="#lessons" class="hover:underline hover:text-yellow-200 transition">Lessons</a>
@@ -144,7 +239,6 @@
     </div>
   </header>
 
-  <!-- Mobile Navigation -->
   <div id="responsive-nav" class="md:hidden fixed inset-0 h-full bg-black/50 z-50 hidden">
     <div class="absolute top-0 right-0 w-64 h-full bg-sky-700 text-white">
       <div class="flex justify-end p-4">
@@ -203,90 +297,119 @@
     </div>
   </div>
 
-  <section id="home" class="h-screen flex items-center justify-center text-center bg-cover bg-center bg-no-repeat text-white animate-fade-in" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5)), url('img/janko-ferlic-sfL_QOnmy00-unsplash.jpg');">
-    <div class="container mx-auto max-w-3xl px-4">
-      <h2 class="text-5xl md:text-6xl font-extrabold mb-6 text-sky-300">Welcome to Your English Learning Journey</h2>
-      <p class="text-xl text-white mb-10 max-w-2xl mx-auto">Explore interactive lessons, practical vocabulary, and real-life conversations to improve your English skills every day!</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#lessons" class="inline-block bg-gradient-to-r from-sky-600 to-blue-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg">Start Learning</a>
-        <a href="#contact" class="inline-block bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg border border-white/30">Join Our Community</a>
+  <section id="home" class="h-screen flex items-center justify-center text-center bg-cover bg-center bg-no-repeat text-white animate-fade-in" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/janko-ferlic-sfL_QOnmy00-unsplash.jpg');">
+    <div class="container mx-auto max-w-2xl p-6 md:p-8 rounded-xl">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-6 text-sky-300">Welcome to Your English Learning Journey</h2>
+      <p class="text-lg text-white mb-8">Explore interactive lessons, practical vocabulary, and real-life conversations to improve your English skills every day!</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#lessons" class="inline-block bg-gradient-to-r from-sky-600 to-blue-500 text-white px-6 py-3 rounded-full text-base md:text-lg font-semibold hover:scale-105 transition-transform duration-300">Start Learning</a>
+        <a href="#quiz" class="inline-block bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-6 py-3 rounded-full text-base md:text-lg font-semibold hover:scale-105 transition-transform duration-300">Take a Quiz</a>
+      </div>
+      <div class="mt-10 flex flex-wrap justify-center gap-4">
+        <div class="bg-white/20 p-3 rounded-lg flex items-center">
+          <i class="fas fa-users text-2xl text-yellow-300 mr-2"></i>
+          <div>
+            <p class="font-bold">5,000+</p>
+            <p class="text-sm">Active Learners</p>
+          </div>
+        </div>
+        <div class="bg-white/20 p-3 rounded-lg flex items-center">
+          <i class="fas fa-book text-2xl text-yellow-300 mr-2"></i>
+          <div>
+            <p class="font-bold">120+</p>
+            <p class="text-sm">Lessons</p>
+          </div>
+        </div>
+        <div class="bg-white/20 p-3 rounded-lg flex items-center">
+          <i class="fas fa-star text-2xl text-yellow-300 mr-2"></i>
+          <div>
+            <p class="font-bold">4.8/5</p>
+            <p class="text-sm">Satisfaction</p>
+          </div>
+        </div>
       </div>
     </div>
   </section> 
 
-  <!-- Stats Section -->
-  <section class="py-16 bg-gradient-to-r from-sky-500 to-blue-600 text-white">
-    <div class="container mx-auto">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        <div class="p-4">
-          <div class="text-4xl font-bold mb-2">500+</div>
-          <div class="text-lg">Vocabulary Words</div>
-        </div>
-        <div class="p-4">
-          <div class="text-4xl font-bold mb-2">120+</div>
-          <div class="text-lg">Grammar Lessons</div>
-        </div>
-        <div class="p-4">
-          <div class="text-4xl font-bold mb-2">80+</div>
-          <div class="text-lg">Conversation Topics</div>
-        </div>
-        <div class="p-4">
-          <div class="text-4xl font-bold mb-2">10k+</div>
-          <div class="text-lg">Active Learners</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Lessons -->
-  <section id="lessons" class="py-24 bg-sky-50">
+  <section id="lessons" class="py-16 md:py-24 bg-sky-50">
     <div class="container mx-auto px-4">
-      <h3 class="section-title text-4xl font-bold text-center text-sky-800">Featured Lessons</h3>
+      <h3 class="text-3xl md:text-4xl font-bold mb-10 text-center text-sky-800">Featured Lessons</h3>
+      <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Our comprehensive curriculum covers all aspects of English learning, from foundational vocabulary to advanced conversation skills.</p>
       <div class="grid md:grid-cols-3 gap-8">
-        <a href="#vocabulary" class="card bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-transform hover:-translate-y-2 text-left border border-sky-100">
-          <div class="w-16 h-16 rounded-full bg-sky-100 flex items-center justify-center mb-6">
-            <i class="fas fa-book-open text-sky-600 text-2xl"></i>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-transform hover:-translate-y-2 text-left border-t-4 border-sky-500">
+          <div class="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mb-4">
+            <i class="fas fa-bookmark text-2xl text-sky-600"></i>
           </div>
-          <h4 class="text-2xl font-semibold mb-3 text-sky-700">Vocabulary Builder</h4>
+          <h4 class="text-2xl font-semibold mb-3 text-sky-700">Vocabulary</h4>
           <p class="text-gray-600 mb-4">Learn essential words and phrases used in everyday life with visual aids and examples.</p>
-          <div class="text-sky-600 font-medium flex items-center">
-            Explore now
-            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+          <button onclick="window.location.href='#vocabulary'" class="text-sky-600 font-medium hover:underline">Explore Vocabulary →</button>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-transform hover:-translate-y-2 text-left border-t-4 border-amber-500">
+          <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-4">
+            <i class="fas fa-pen text-2xl text-amber-600"></i>
           </div>
-        </a>
-        
-        <a href="#grammar" class="card bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-transform hover:-translate-y-2 text-left border border-sky-100">
-          <div class="w-16 h-16 rounded-full bg-sky-100 flex items-center justify-center mb-6">
-            <i class="fas fa-pen text-sky-600 text-2xl"></i>
-          </div>
-          <h4 class="text-2xl font-semibold mb-3 text-sky-700">Grammar Mastery</h4>
+          <h4 class="text-2xl font-semibold mb-3 text-amber-700">Grammar</h4>
           <p class="text-gray-600 mb-4">Understand English sentence structure and grammar rules through clear, interactive examples.</p>
-          <div class="text-sky-600 font-medium flex items-center">
-            Explore now
-            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+          <button onclick="window.location.href='#grammar'" class="text-amber-600 font-medium hover:underline">Explore Grammar →</button>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-transform hover:-translate-y-2 text-left border-t-4 border-emerald-500">
+          <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+            <i class="fas fa-comments text-2xl text-emerald-600"></i>
           </div>
-        </a>
-        
-        <a href="#conversation" class="card bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-transform hover:-translate-y-2 text-left border border-sky-100">
-          <div class="w-16 h-16 rounded-full bg-sky-100 flex items-center justify-center mb-6">
-            <i class="fas fa-comments text-sky-600 text-2xl"></i>
-          </div>
-          <h4 class="text-2xl font-semibold mb-3 text-sky-700">Conversation Practice</h4>
+          <h4 class="text-2xl font-semibold mb-3 text-emerald-700">Conversation</h4>
           <p class="text-gray-600 mb-4">Practice speaking with real-life dialogues and useful expressions for daily communication.</p>
-          <div class="text-sky-600 font-medium flex items-center">
-            Explore now
-            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+          <button onclick="window.location.href='#conversation'" class="text-emerald-600 font-medium hover:underline">Explore Conversation →</button>
+        </div>
+      </div>
+      <div class="mt-16 text-center">
+        <h4 class="text-2xl font-bold text-sky-800 mb-6">Learning Path Recommendations</h4>
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-md">
+          <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+            <div class="flex items-center mb-4 md:mb-0">
+              <div class="bg-sky-100 text-sky-800 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                <i class="fas fa-user-graduate"></i>
+              </div>
+              <div>
+                <h5 class="font-bold">Beginner Level</h5>
+                <p class="text-sm text-gray-600">Start your English journey</p>
+              </div>
+            </div>
+            <div class="flex items-center mb-4 md:mb-0">
+              <div class="bg-amber-100 text-amber-800 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                <i class="fas fa-user"></i>
+              </div>
+              <div>
+                <h5 class="font-bold">Intermediate Level</h5>
+                <p class="text-sm text-gray-600">Build on your foundation</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <div class="bg-emerald-100 text-emerald-800 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                <i class="fas fa-user-tie"></i>
+              </div>
+              <div>
+                <h5 class="font-bold">Advanced Level</h5>
+                <p class="text-sm text-gray-600">Master fluency</p>
+              </div>
+            </div>
           </div>
-        </a>
+          <div class="bg-gray-100 p-4 rounded-lg">
+            <p class="font-medium">Recommended for you: <span class="text-sky-600">Beginner Level Path</span></p>
+            <div class="mt-2 flex items-center">
+              <div class="w-full bg-gray-300 rounded-full h-2.5">
+                <div class="bg-sky-600 h-2.5 rounded-full" style="width: 30%"></div>
+              </div>
+              <span class="text-sm text-gray-600 ml-2">30% completed</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Vocabulary Section -->
   <section id="vocabulary" class="py-24 bg-white">
     <div class="container mx-auto max-w-4xl px-4">
       <h2 class="section-title text-4xl font-bold text-center text-sky-700 mb-10">Essential Vocabulary</h2>
-      
       <div class="bg-sky-50 p-6 rounded-xl shadow-sm mb-8">
         <div class="flex flex-col sm:flex-row gap-4 items-center">
           <div class="relative flex-grow">
@@ -298,11 +421,8 @@
           </button>
         </div>
       </div>
-      
       <div id="vocabList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- Vocabulary items will be populated here -->
       </div>
-      
       <div class="mt-10 flex justify-center">
         <button id="loadMore" class="bg-white text-sky-600 border border-sky-600 hover:bg-sky-50 px-6 py-3 rounded-lg font-medium transition">
           Load More Words
@@ -311,11 +431,10 @@
     </div>
   </section>
 
-  <!-- Quiz Section -->
   <section id="quiz" class="py-16 bg-sky-50">
     <div class="container mx-auto px-4 max-w-2xl">
       <h2 class="section-title text-3xl font-bold text-sky-700 mb-6 text-center">Vocabulary Quiz</h2>
-      
+      <p class="text-gray-600 mb-8">Test your knowledge with this quick vocabulary quiz!</p>
       <div class="mb-6">
         <div class="flex justify-between text-sm text-gray-600 mb-1">
           <span>Progress</span>
@@ -325,7 +444,6 @@
           <div id="progressFill" class="progress-fill" style="width: 0%"></div>
         </div>
       </div>
-      
       <div id="quiz-box" class="bg-white p-6 rounded-xl shadow-lg">
         <p id="question" class="text-xl font-semibold mb-6 text-center"></p>
         <div id="options" class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6"></div>
@@ -337,75 +455,344 @@
         </div>
         <p id="score" class="mt-6 text-lg text-center text-gray-700"></p>
       </div>
+      <div class="mt-12 bg-white p-6 rounded-xl shadow-lg text-left">
+        <h3 class="text-xl font-bold text-sky-800 mb-4">Learning Tips</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-sky-50 p-4 rounded-lg">
+            <div class="w-10 h-10 bg-sky-100 text-sky-600 rounded-full flex items-center justify-center mb-3">
+              <i class="fas fa-repeat"></i>
+            </div>
+            <h4 class="font-bold mb-2">Spaced Repetition</h4>
+            <p class="text-sm text-gray-600">Review words at increasing intervals to improve long-term retention.</p>
+          </div>
+          <div class="bg-amber-50 p-4 rounded-lg">
+            <div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mb-3">
+              <i class="fas fa-sentence"></i>
+            </div>
+            <h4 class="font-bold mb-2">Use in Context</h4>
+            <p class="text-sm text-gray-600">Learn words in sentences to understand how they're used naturally.</p>
+          </div>
+          <div class="bg-emerald-50 p-4 rounded-lg">
+            <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mb-3">
+              <i class="fas fa-gamepad"></i>
+            </div>
+            <h4 class="font-bold mb-2">Make it Fun</h4>
+            <p class="text-sm text-gray-600">Use games and quizzes to make vocabulary learning enjoyable.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Grammar Section -->
   <section id="grammar" class="py-24 bg-white">
-    <div class="container mx-auto max-w-4xl px-4">
-      <h2 class="section-title text-4xl font-bold text-center text-sky-700 mb-10">Grammar Basics</h2>
+    <div class="container mx-auto max-w-6xl px-4">
+      <h2 class="section-title text-4xl font-bold text-center text-sky-700 mb-10">Comprehensive Grammar Guide</h2>
+      <p class="text-gray-600 mb-12 mx-auto text-center max-w-3xl">Master the building blocks of English with our comprehensive grammar guides, interactive exercises, and practical examples.</p>
       
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="card bg-sky-50 p-6 rounded-xl shadow-sm">
-          <h3 class="text-2xl font-semibold text-sky-700 mb-4">Tenses Overview</h3>
-          <div class="space-y-6">
+      <div class="tabs">
+        <div class="tab active" data-tab="tenses">Tenses</div>
+        <div class="tab" data-tab="parts">Parts of Speech</div>
+        <div class="tab" data-tab="sentences">Sentence Structure</div>
+        <div class="tab" data-tab="conditionals">Conditionals</div>
+      </div>
+      <div id="tenses" class="grammar-content active">
+        <div class="bg-white p-8 rounded-xl shadow-lg">
+          <h3 class="text-2xl font-bold text-sky-800 mb-6">English Tenses Overview</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h4 class="text-lg font-semibold text-sky-700 mb-1">Simple Present Tense</h4>
-              <p class="text-gray-700 mb-2">Digunakan untuk menyatakan kebiasaan atau fakta umum.</p>
-              <p class="mb-1"><strong>Rumus:</strong> Subject + V1 (s/es untuk he/she/it)</p>
-              <p><strong>Contoh:</strong> She walks to school every day. / The sun rises in the east.</p>
+              <h4 class="text-xl font-semibold text-sky-700 mb-4 flex items-center">
+                <i class="fas fa-clock mr-2"></i> Present Tenses
+              </h4>
+              <div class="mb-6">
+                <h5 class="font-bold text-lg mb-2">Simple Present</h5>
+                <p class="text-gray-700 mb-3">Digunakan untuk kebiasaan, fakta umum, dan situasi permanen.</p>
+                <p class="mb-2"><strong>Rumus:</strong> Subject + V1 (s/es untuk he/she/it)</p>
+                <div class="example-card">
+                  <p>She <strong>works</strong> at a bank.</p>
+                  <p>They <strong>play</strong> football every weekend.</p>
+                </div>
+              </div>
+              <div class="mb-6">
+                <h5 class="font-bold text-lg mb-2">Present Continuous</h5>
+                <p class="text-gray-700 mb-3">Digunakan untuk aksi yang sedang berlangsung sekarang atau rencana di masa depan.</p>
+                <p class="mb-2"><strong>Rumus:</strong> Subject + am/is/are + V-ing</p>
+                <div class="example-card">
+                  <p>I <strong>am studying</strong> English now.</p>
+                  <p>We <strong>are meeting</strong> tomorrow at 5 PM.</p>
+                </div>
+              </div>
             </div>
             
             <div>
-              <h4 class="text-lg font-semibold text-sky-700 mb-1">Present Continuous Tense</h4>
-              <p class="text-gray-700 mb-2">Digunakan untuk aksi yang sedang berlangsung sekarang.</p>
-              <p class="mb-1"><strong>Rumus:</strong> Subject + am/is/are + V-ing</p>
-              <p><strong>Contoh:</strong> I am studying English now. / They are playing outside.</p>
+              <h4 class="text-xl font-semibold text-sky-700 mb-4 flex items-center">
+                <i class="fas fa-history mr-2"></i> Past Tenses
+              </h4>
+              <div class="mb-6">
+                <h5 class="font-bold text-lg mb-2">Simple Past</h5>
+                <p class="text-gray-700 mb-3">Digunakan untuk aksi yang sudah selesai di waktu tertentu di masa lalu.</p>
+                <p class="mb-2"><strong>Rumus:</strong> Subject + V2</p>
+                <div class="example-card">
+                  <p>She <strong>visited</strong> Paris last summer.</p>
+                  <p>They <strong>watched</strong> a movie yesterday.</p>
+                </div>
+              </div>
+              <div class="mb-6">
+                <h5 class="font-bold text-lg mb-2">Past Continuous</h5>
+                <p class="text-gray-700 mb-3">Digunakan untuk aksi yang sedang berlangsung di waktu tertentu di masa lalu.</p>
+                <p class="mb-2"><strong>Rumus:</strong> Subject + was/were + V-ing</p>
+                <div class="example-card">
+                  <p>I <strong>was sleeping</strong> when you called.</p>
+                  <p>They <strong>were playing</strong> at 8 PM last night.</p>
+                </div>
+              </div>
             </div>
-            
-            <div>
-              <h4 class="text-lg font-semibold text-sky-700 mb-1">Simple Past Tense</h4>
-              <p class="text-gray-700 mb-2">Digunakan untuk aksi yang terjadi di masa lalu.</p>
-              <p class="mb-1"><strong>Rumus:</strong> Subject + V2 (past form)</p>
-              <p><strong>Contoh:</strong> We visited Bali last year. / He cooked dinner yesterday.</p>
+          </div>
+          <div class="mt-8">
+            <h4 class="text-xl font-semibold text-sky-700 mb-4 flex items-center">
+              <i class="fas fa-calendar-alt mr-2"></i> Future Tenses
+            </h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h5 class="font-bold text-lg mb-2">Simple Future</h5>
+                <p class="text-gray-700 mb-3">Digunakan untuk rencana, prediksi, atau keputusan spontan di masa depan.</p>
+                <p class="mb-2"><strong>Rumus:</strong> Subject + will + V1</p>
+                <div class="example-card">
+                  <p>I <strong>will call</strong> you tomorrow.</p>
+                  <p>She <strong>will be</strong> 25 next month.</p>
+                </div>
+              </div>
+              <div>
+                <h5 class="font-bold text-lg mb-2">Going to Future</h5>
+                <p class="text-gray-700 mb-3">Digunakan untuk rencana yang sudah dibuat sebelumnya atau prediksi berdasarkan bukti.</p>
+                <p class="mb-2"><strong>Rumus:</strong> Subject + am/is/are + going to + V1</p>
+                <div class="example-card">
+                  <p>We <strong>are going to travel</strong> to Bali next month.</p>
+                  <p>Look at those clouds! It <strong>is going to rain</strong>.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        
-        <div class="card bg-sky-50 p-6 rounded-xl shadow-sm">
-          <h3 class="text-2xl font-semibold text-sky-700 mb-4">Advanced Tenses</h3>
-          <div class="space-y-6">
+      </div>
+      
+      <div id="parts" class="grammar-content">
+        <div class="bg-white p-8 rounded-xl shadow-lg">
+          <h3 class="text-2xl font-bold text-sky-800 mb-6">Parts of Speech</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h4 class="text-lg font-semibold text-sky-700 mb-1">Present Perfect Tense</h4>
-              <p class="text-gray-700 mb-2">Digunakan untuk menyatakan aksi yang telah terjadi dan masih relevan dengan saat ini.</p>
-              <p class="mb-1"><strong>Rumus:</strong> Subject + has/have + V3 (past participle)</p>
-              <p><strong>Contoh:</strong> I have finished my homework. / She has lived here for five years.</p>
+              <h4 class="text-xl font-semibold text-sky-700 mb-4">Nouns & Pronouns</h4>
+              <div class="mb-6">
+                <h5 class="font-bold text-lg mb-2">Nouns (Kata Benda)</h5>
+                <p class="text-gray-700 mb-3">Kata yang digunakan untuk menyebut orang, tempat, benda, atau konsep.</p>
+                <div class="example-card">
+                  <p><strong>People:</strong> teacher, student, doctor</p>
+                  <p><strong>Places:</strong> city, school, hospital</p>
+                  <p><strong>Things:</strong> book, car, computer</p>
+                </div>
+              </div>
+              <div class="mb-6">
+                <h5 class="font-bold text-lg mb-2">Pronouns (Kata Ganti)</h5>
+                <p class="text-gray-700 mb-3">Kata yang menggantikan noun untuk menghindari pengulangan.</p>
+                <div class="example-card">
+                  <p><strong>Personal:</strong> I, you, he, she, it, we, they</p>
+                  <p><strong>Possessive:</strong> my, your, his, her, its, our, their</p>
+                  <p><strong>Reflexive:</strong> myself, yourself, himself, herself</p>
+                </div>
+              </div>
             </div>
-            
+    
             <div>
-              <h4 class="text-lg font-semibold text-sky-700 mb-1">Past Continuous Tense</h4>
-              <p class="text-gray-700 mb-2">Digunakan untuk aksi yang sedang berlangsung pada waktu tertentu di masa lalu.</p>
-              <p class="mb-1"><strong>Rumus:</strong> Subject + was/were + V-ing</p>
-              <p><strong>Contoh:</strong> I was watching TV when you called. / They were studying at 8 PM last night.</p>
+              <h4 class="text-xl font-semibold text-sky-700 mb-4">Verbs & Adjectives</h4>
+              <div class="mb-6">
+                <h5 class="font-bold text-lg mb-2">Verbs (Kata Kerja)</h5>
+                <p class="text-gray-700 mb-3">Kata yang menunjukkan tindakan atau keadaan.</p>
+                <div class="example-card">
+                  <p><strong>Action verbs:</strong> run, eat, write, speak</p>
+                  <p><strong>State verbs:</strong> be, have, like, know, believe</p>
+                  <p><strong>Auxiliary verbs:</strong> do, have, will</p>
+                </div>
+              </div>
+              <div class="mb-6">
+                <h5 class="font-bold text-lg mb-2">Adjectives (Kata Sifat)</h5>
+                <p class="text-gray-700 mb-3">Kata yang mendeskripsikan noun atau pronoun.</p>
+                <div class="example-card">
+                  <p>The <strong>beautiful</strong> flower</p>
+                  <p>An <strong>interesting</strong> book</p>
+                  <p>A <strong>tall</strong> building</p>
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="mt-8">
+            <h4 class="text-xl font-semibold text-sky-700 mb-4">Adverbs, Prepositions & Conjunctions</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div>
+                <h5 class="font-bold text-lg mb-2">Adverbs</h5>
+                <p class="text-gray-700 mb-3">Kata yang mendeskripsikan verb, adjective, atau adverb lain.</p>
+                <div class="example-card">
+                  <p>She speaks <strong>slowly</strong>.</p>
+                  <p>It's <strong>extremely</strong> hot today.</p>
+                </div>
+              </div>
+              <div>
+                <h5 class="font-bold text-lg mb-2">Prepositions</h5>
+                <p class="text-gray-700 mb-3">Kata yang menunjukkan hubungan antara noun/pronoun dengan kata lain.</p>
+                <div class="example-card">
+                  <p>The book is <strong>on</strong> the table.</p>
+                  <p>We'll meet <strong>at</strong> 5 PM.</p>
+                </div>
+              </div>
+              <div>
+                <h5 class="font-bold text-lg mb-2">Conjunctions</h5>
+                <p class="text-gray-700 mb-3">Kata yang menghubungkan kata, frase, atau klausa.</p>
+                <div class="example-card">
+                  <p>I like tea <strong>and</strong> coffee.</p>
+                  <p>She's tired <strong>but</strong> she can't sleep.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="sentences" class="grammar-content">
+        <div class="bg-white p-8 rounded-xl shadow-lg">
+          <h3 class="text-2xl font-bold text-sky-800 mb-6">Sentence Structure</h3>
+          <div class="mb-8">
+            <h4 class="text-xl font-semibold text-sky-700 mb-4">Basic Sentence Patterns</h4>
+            <div class="comparison-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Pattern</th>
+                    <th>Formula</th>
+                    <th>Example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Subject + Verb</td>
+                    <td>S + V</td>
+                    <td>Birds fly.</td>
+                  </tr>
+                  <tr>
+                    <td>Subject + Verb + Object</td>
+                    <td>S + V + O</td>
+                    <td>She reads books.</td>
+                  </tr>
+                  <tr>
+                    <td>Subject + Verb + Complement</td>
+                    <td>S + V + C</td>
+                    <td>He is a teacher.</td>
+                  </tr>
+                  <tr>
+                    <td>Subject + Verb + Adverb</td>
+                    <td>S + V + A</td>
+                    <td>They live here.</td>
+                  </tr>
+                  <tr>
+                    <td>Subject + Verb + Object + Object</td>
+                    <td>S + V + O + O</td>
+                    <td>She gave me a gift.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="mb-8">
+            <h4 class="text-xl font-semibold text-sky-700 mb-4">Question Forms</h4>
             
-            <div>
-              <h4 class="text-lg font-semibold text-sky-700 mb-1">Future Continuous Tense</h4>
-              <p class="text-gray-700 mb-2">Digunakan untuk menunjukkan aksi yang akan sedang berlangsung di waktu tertentu di masa depan.</p>
-              <p class="mb-1"><strong>Rumus:</strong> Subject + will be + V-ing</p>
-              <p><strong>Contoh:</strong> I will be traveling at this time next week. / She will be working on her thesis tomorrow morning.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h5 class="font-bold text-lg mb-2">Yes/No Questions</h5>
+                <p class="text-gray-700 mb-3">Pertanyaan yang dijawab dengan "ya" atau "tidak".</p>
+                <div class="example-card">
+                  <p><strong>Do</strong> you like coffee? → Yes, I do.</p>
+                  <p><strong>Is</strong> she coming? → No, she isn't.</p>
+                </div>
+              </div>
+              <div>
+                <h5 class="font-bold text-lg mb-2">Wh- Questions</h5>
+                <p class="text-gray-700 mb-3">Pertanyaan yang dimulai dengan kata tanya.</p>
+                <div class="example-card">
+                  <p><strong>What</strong> is your name?</p>
+                  <p><strong>Where</strong> do you live?</p>
+                  <p><strong>Why</strong> are you late?</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-xl font-semibold text-sky-700 mb-4">Complex Sentences</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h5 class="font-bold text-lg mb-2">Compound Sentences</h5>
+                <p class="text-gray-700 mb-3">Menggabungkan dua independent clause dengan conjunction.</p>
+                <div class="example-card">
+                  <p>I wanted to go, <strong>but</strong> I was too tired.</p>
+                  <p>She studies hard, <strong>so</strong> she gets good grades.</p>
+                </div>
+              </div>
+              <div>
+                <h5 class="font-bold text-lg mb-2">Complex Sentences</h5>
+                <p class="text-gray-700 mb-3">Menggabungkan independent clause dengan dependent clause.</p>
+                <div class="example-card">
+                  <p><strong>Although</strong> it was raining, we went for a walk.</p>
+                  <p>I'll call you <strong>when</strong> I arrive.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="conditionals" class="grammar-content">
+        <div class="bg-white p-8 rounded-xl shadow-lg">
+          <h3 class="text-2xl font-bold text-sky-800 mb-6">Conditional Sentences</h3>
+          <div class="mb-8">
+            <h4 class="text-xl font-semibold text-sky-700 mb-4">Conditional Type 0</h4>
+            <p class="text-gray-700 mb-3">Digunakan untuk fakta umum atau kebenaran ilmiah.</p>
+            <p class="mb-2"><strong>Rumus:</strong> If + simple present, simple present</p>
+            <div class="example-card">
+              <p>If you <strong>heat</strong> ice, it <strong>melts</strong>.</p>
+              <p>If people <strong>don't eat</strong>, they <strong>get</strong> hungry.</p>
+            </div>
+          </div>
+          <div class="mb-8">
+            <h4 class="text-xl font-semibold text-sky-700 mb-4">Conditional Type 1</h4>
+            <p class="text-gray-700 mb-3">Digunakan untuk situasi yang mungkin terjadi di masa depan.</p>
+            <p class="mb-2"><strong>Rumus:</strong> If + simple present, will + V1</p>
+            <div class="example-card">
+              <p>If it <strong>rains</strong> tomorrow, we <strong>will cancel</strong> the picnic.</p>
+              <p>If you <strong>study</strong> hard, you <strong>will pass</strong> the exam.</p>
+            </div>
+          </div>
+          <div class="mb-8">
+            <h4 class="text-xl font-semibold text-sky-700 mb-4">Conditional Type 2</h4>
+            <p class="text-gray-700 mb-3">Digunakan untuk situasi yang tidak nyata atau tidak mungkin di masa sekarang.</p>
+            <p class="mb-2"><strong>Rumus:</strong> If + simple past, would + V1</p>
+            <div class="example-card">
+              <p>If I <strong>had</strong> a million dollars, I <strong>would buy</strong> a house.</p>
+              <p>If I <strong>were</strong> you, I <strong>would tell</strong> the truth.</p>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-xl font-semibold text-sky-700 mb-4">Conditional Type 3</h4>
+            <p class="text-gray-700 mb-3">Digunakan untuk situasi yang tidak terjadi di masa lalu.</p>
+            <p class="mb-2"><strong>Rumus:</strong> If + past perfect, would have + V3</p>
+            <div class="example-card">
+              <p>If you <strong>had studied</strong> harder, you <strong>would have passed</strong> the exam.</p>
+              <p>If it <strong>hadn't rained</strong>, we <strong>would have gone</strong> to the beach.</p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  
-  <!-- Grammar Quiz -->
+
   <section id="grammar-quiz" class="py-24 bg-sky-50">
     <div class="container mx-auto max-w-4xl px-4">
       <h2 class="section-title text-4xl font-bold text-center text-sky-700 mb-10">Grammar Quiz</h2>
-      
       <div class="mb-6">
         <div class="flex justify-between text-sm text-gray-600 mb-1">
           <span>Progress</span>
@@ -415,29 +802,24 @@
           <div id="grammarProgressFill" class="progress-fill" style="width: 0%"></div>
         </div>
       </div>
-      
       <div class="card bg-white p-8 rounded-xl shadow-lg">
         <div id="grammarQuiz" class="mb-6">
           <p id="grammarQuestion" class="text-xl font-semibold mb-6"></p>
           <div id="grammarOptions" class="space-y-3"></div>
-        </div>
-        
+        </div>        
         <div class="text-center">
           <button id="grammarSubmit" class="bg-sky-500 hover:bg-sky-600 text-white px-6 py-3 rounded-lg font-medium transition">
             Submit Answer
           </button>
         </div>
-        
         <p id="grammarResult" class="mt-6 text-lg font-semibold text-center"></p>
       </div>
     </div>
   </section>
 
-  <!-- Conversation Section -->
   <section id="conversation" class="py-24 bg-white">
     <div class="container mx-auto max-w-4xl px-4">
-      <h2 class="section-title text-4xl font-bold text-center text-sky-700 mb-10">Real-Life Conversation Scenarios</h2>
-      
+      <h2 class="section-title text-4xl font-bold text-center text-sky-700 mb-10">Real-Life Conversation Scenarios</h2>   
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="card bg-sky-50 p-6 rounded-xl shadow-sm">
           <div class="flex items-center mb-4">
@@ -445,30 +827,25 @@
               <i class="fas fa-user text-sky-600"></i>
             </div>
             <h3 class="text-xl font-semibold text-sky-800">At the Restaurant</h3>
-          </div>
-          
+          </div>  
           <div class="space-y-4">
             <div class="bg-white p-4 rounded-lg">
               <p class="font-medium text-sky-700">Waiter:</p>
               <p>Are you ready to order?</p>
             </div>
-            
             <div class="bg-sky-100 p-4 rounded-lg">
               <p class="font-medium text-sky-700">You:</p>
               <p>Yes, I'll have the grilled chicken and a lemonade, please.</p>
             </div>
-            
             <div class="bg-white p-4 rounded-lg">
               <p class="font-medium text-sky-700">Waiter:</p>
               <p>Would you like any appetizers or desserts?</p>
             </div>
-            
             <div class="bg-sky-100 p-4 rounded-lg">
               <p class="font-medium text-sky-700">You:</p>
               <p>Just the main course for now, thank you.</p>
             </div>
           </div>
-          
           <div class="mt-4 text-sm text-gray-600">
             <p class="font-medium">Key Expressions:</p>
             <ul class="list-disc pl-5 mt-1">
@@ -478,7 +855,6 @@
             </ul>
           </div>
         </div>
-        
         <div class="card bg-sky-50 p-6 rounded-xl shadow-sm">
           <div class="flex items-center mb-4">
             <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center mr-3">
@@ -486,29 +862,24 @@
             </div>
             <h3 class="text-xl font-semibold text-sky-800">Making a Phone Call</h3>
           </div>
-          
           <div class="space-y-4">
             <div class="bg-white p-4 rounded-lg">
               <p class="font-medium text-sky-700">You:</p>
               <p>Hello, may I speak to Mr. David, please?</p>
             </div>
-            
             <div class="bg-sky-100 p-4 rounded-lg">
               <p class="font-medium text-sky-700">Receptionist:</p>
               <p>Sure, hold on a moment. Who's calling, please?</p>
             </div>
-            
             <div class="bg-white p-4 rounded-lg">
               <p class="font-medium text-sky-700">You:</p>
               <p>This is Sarah from ABC Company.</p>
             </div>
-            
             <div class="bg-sky-100 p-4 rounded-lg">
               <p class="font-medium text-sky-700">Receptionist:</p>
               <p>One moment, please. I'll connect you.</p>
             </div>
           </div>
-          
           <div class="mt-4 text-sm text-gray-600">
             <p class="font-medium">Key Expressions:</p>
             <ul class="list-disc pl-5 mt-1">
@@ -522,30 +893,24 @@
     </div>
   </section>
 
-  <!-- Conversation Practice -->
   <section id="conversation-practice" class="py-24 bg-sky-50">
     <div class="container mx-auto max-w-4xl px-4">
-      <h2 class="section-title text-4xl font-bold text-center text-sky-800 mb-10">Interactive Conversation Practice</h2>
-      
+      <h2 class="section-title text-4xl font-bold text-center text-sky-800 mb-10">Interactive Conversation Practice</h2>   
       <div class="card bg-white p-8 rounded-xl shadow-lg">
         <div class="flex items-start mb-6">
           <div class="w-12 h-12 rounded-full bg-sky-100 flex items-center justify-center mr-4 flex-shrink-0">
             <i class="fas fa-robot text-sky-600 text-xl"></i>
           </div>
           <p class="text-lg" id="botLine"><strong>Bot:</strong> You walk into a coffee shop and see someone you know. What do you say?</p>
-        </div>
-        
+        </div> 
         <div id="optionsContainer" class="space-y-3 pl-16">
-          <!-- Options will be populated here -->
         </div>
-        
         <div id="conversationFeedback" class="mt-8 p-4 bg-sky-50 rounded-lg hidden">
           <div class="flex">
             <i class="fas fa-info-circle text-sky-600 mt-1 mr-3"></i>
             <p id="feedbackText"></p>
           </div>
         </div>
-        
         <div class="text-center mt-8">
           <button id="nextBtnConv" onclick="nextScenario()" class="bg-sky-500 hover:bg-sky-600 text-white px-6 py-3 rounded-lg font-medium transition hidden">
             Next Scenario <i class="fas fa-arrow-right ml-2"></i>
@@ -558,35 +923,29 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
   <section id="contact" class="py-24 bg-white">
     <div class="container mx-auto max-w-xl px-4">
       <h3 class="section-title text-4xl font-bold mb-8 text-center text-sky-800">Get in Touch</h3>
-      
       <form id="contactForm" class="space-y-6 card bg-sky-50 p-8 rounded-xl shadow-sm">
         <div>
           <label class="block text-gray-700 mb-2 font-medium" for="name">Your Name</label>
           <input type="text" id="name" placeholder="Enter your name" class="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 transition" />
           <p id="nameError" class="text-red-500 text-sm mt-1 hidden">Please enter your name</p>
         </div>
-        
         <div>
           <label class="block text-gray-700 mb-2 font-medium" for="email">Your Email</label>
           <input type="email" id="email" placeholder="Enter your email" class="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 transition" />
           <p id="emailError" class="text-red-500 text-sm mt-1 hidden">Please enter a valid email</p>
-        </div>
-        
+        </div>  
         <div>
           <label class="block text-gray-700 mb-2 font-medium" for="message">Your Message</label>
           <textarea id="message" placeholder="What would you like to ask?" rows="5" class="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 transition"></textarea>
           <p id="messageError" class="text-red-500 text-sm mt-1 hidden">Please enter your message</p>
         </div>
-        
         <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 text-white px-4 py-4 rounded-lg font-semibold transition flex items-center justify-center">
           <span id="submitText">Send Message</span>
           <i id="submitSpinner" class="fas fa-spinner fa-spin ml-2 hidden"></i>
         </button>
-        
         <div id="successMessage" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg hidden">
           <i class="fas fa-check-circle mr-2"></i> Your message has been sent successfully!
         </div>
@@ -594,28 +953,23 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="bg-sky-700 text-white">
     <div class="container mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-start gap-8">
       <div class="max-w-sm">
         <h2 class="logo text-3xl font-bold mb-3">English Learning Hub</h2>
         <p class="text-sky-100 mb-4">Belajar bahasa Inggris dengan cara yang menyenangkan, interaktif, dan mudah dipahami. Mulai dari vocabulary, grammar, sampai conversation!</p>
         <div class="flex space-x-4">
-          <a href="#" class="text-sky-100 hover:text-white transition">
+          <a href="https://www.facebook.com/nurhabibah.syafitri?locale=id_ID" class="text-sky-100 hover:text-white transition">
             <i class="fab fa-facebook-f"></i>
           </a>
-          <a href="#" class="text-sky-100 hover:text-white transition">
+          <a href="https://www.instagram.com/nuraisyaftri_/" class="text-sky-100 hover:text-white transition">
             <i class="fab fa-instagram"></i>
           </a>
-          <a href="#" class="text-sky-100 hover:text-white transition">
-            <i class="fab fa-youtube"></i>
-          </a>
-          <a href="#" class="text-sky-100 hover:text-white transition">
+          <a href="https://www.linkedin.com/in/nurhabibah-syafitri-xi-rpl-4-8b1aa1294/" class="text-sky-100 hover:text-white transition">
             <i class="fab fa-linkedin-in"></i>
           </a>
         </div>
       </div>
-      
       <div>
         <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
         <ul class="space-y-2 text-sky-100">
@@ -626,37 +980,30 @@
           <li><a href="#conversation" class="hover:text-white transition">Conversation</a></li>
         </ul>
       </div>
-      
-      <div>
+      <div class="mr-16">
         <h3 class="text-lg font-semibold mb-4">Contact</h3>
         <ul class="space-y-2 text-sky-100">
           <li class="flex items-start">
             <i class="fas fa-envelope mt-1 mr-3"></i>
-            <span>nurhabibahsyafitri@student.polmed.ac.id</span>
+            <span>nuraisyafitri@gmail.com</span>
           </li>
           <li class="flex items-start">
-            <i class="fas fa-phone mt-1 mr-3"></i>
+            <i class="fas fa-phone mt=1 mr-3"></i>
             <span>+62 819 9171 6036</span>
           </li>
           <li class="flex items-start">
-            <i class="fab fa-instagram mt-1 mr-3"></i>
+            <i class="fab fa-instagram mt=1 mr-3"></i>
             <span>@nuraisyaftri_</span>
-          </li>
-          <li class="flex items-start">
-            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
-            <span>Politeknik Negeri Medan</span>
           </li>
         </ul>
       </div>
     </div>
-    
     <div class="bg-sky-800 text-center py-4 text-sm text-sky-200">
       &copy; 2025 English Learning Hub. All rights reserved.
     </div>
   </footer>
 
   <script>
-    // Mobile navigation
     const burgerIcon = document.getElementById('burger-icon');
     const responsiveNav = document.getElementById('responsive-nav');
     const closeBtn = document.getElementById('close-btn');
@@ -678,71 +1025,29 @@
       }
     });
 
-    // Dark mode toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-    const themeToggleNav = document.getElementById('theme-toggle-nav');
-    const body = document.body;
-
-    function toggleDarkMode() {
-      body.classList.toggle('dark-mode');
-      const isDarkMode = body.classList.contains('dark-mode');
-      localStorage.setItem('darkMode', isDarkMode);
-      
-      const moonIcons = document.querySelectorAll('.fa-moon');
-      moonIcons.forEach(icon => {
-        if (isDarkMode) {
-          icon.classList.remove('fa-moon');
-          icon.classList.add('fa-sun');
-        } else {
-          icon.classList.remove('fa-sun');
-          icon.classList.add('fa-moon');
-        }
+    const tabs = document.querySelectorAll('.tab');
+    const grammarContents = document.querySelectorAll('.grammar-content');
+    
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        grammarContents.forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        const tabName = tab.getAttribute('data-tab');
+        document.getElementById(tabName).classList.add('active');
       });
+    });
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
     }
 
-    themeToggle.addEventListener('click', toggleDarkMode);
-    themeToggleMobile.addEventListener('click', toggleDarkMode);
-    themeToggleNav.addEventListener('click', toggleDarkMode);
-
-    // Check for saved dark mode preference
-    if (localStorage.getItem('darkMode') === 'true') {
-      body.classList.add('dark-mode');
-      const moonIcons = document.querySelectorAll('.fa-moon');
-      moonIcons.forEach(icon => {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-      });
-    }
-
-    // Vocabulary list
     const vocab = [
-      ["Apple", "Apel", "noun"], 
-      ["Book", "Buku", "noun"], 
-      ["Cat", "Kucing", "noun"], 
-      ["Dog", "Anjing", "noun"], 
-      ["Eat", "Makan", "verb"], 
-      ["Fast", "Cepat", "adjective"], 
-      ["Good", "Baik", "adjective"], 
-      ["Happy", "Senang", "adjective"], 
-      ["Ice", "Es", "noun"], 
-      ["Jump", "Lompat", "verb"], 
-      ["Kind", "Baik hati", "adjective"], 
-      ["Love", "Cinta", "noun/verb"], 
-      ["Moon", "Bulan", "noun"], 
-      ["Night", "Malam", "noun"], 
-      ["Open", "Buka", "verb"], 
-      ["Pen", "Pulpen", "noun"], 
-      ["Queen", "Ratu", "noun"], 
-      ["Run", "Lari", "verb"], 
-      ["Sun", "Matahari", "noun"], 
-      ["Tree", "Pohon", "noun"], 
-      ["Umbrella", "Payung", "noun"], 
-      ["Very", "Sangat", "adverb"], 
-      ["Water", "Air", "noun"], 
-      ["Xylophone", "Silofon", "noun"], 
-      ["Yellow", "Kuning", "adjective"], 
-      ["Zoo", "Kebun binatang", "noun"]
+      ["Apple", "Apel", "noun"], ["Book", "Buku", "noun"], ["Cat", "Kucing", "noun"], ["Dog", "Anjing", "noun"], ["Eat", "Makan", "verb"], ["Fast", "Cepat", "adjective"], ["Good", "Baik", "adjective"], ["Happy", "Senang", "adjective"], ["Ice", "Es", "noun"], ["Jump", "Lompat", "verb"], ["Kind", "Baik hati", "adjective"], ["Love", "Cinta", "noun/verb"], ["Moon", "Bulan", "noun"], ["Night", "Malam", "noun"], ["Open", "Buka", "verb"], ["Pen", "Pulpen", "noun"], ["Queen", "Ratu", "noun"], ["Run", "Lari", "verb"], ["Sun", "Matahari", "noun"], ["Tree", "Pohon", "noun"], ["Umbrella", "Payung", "noun"], ["Very", "Sangat", "adverb"], ["Water", "Air", "noun"], ["Xylophone", "Silofon", "noun"], ["Yellow", "Kuning", "adjective"], ["Zoo", "Kebun binatang", "noun"],["Animal", "Hewan", "noun"],["Baby", "Bayi", "noun"],["Car", "Mobil", "noun"],["Door", "Pintu", "noun"],["Eye", "Mata", "noun"],["Family", "Keluarga", "noun"],["Garden", "Taman", "noun"],["House", "Rumah", "noun"],["Island", "Pulau", "noun"],["Juice", "Jus", "noun"],["Key", "Kunci", "noun"],["Light", "Cahaya", "noun"],["Money", "Uang", "noun"],["Name", "Nama", "noun"],["Ocean", "Samudra", "noun"],["Paper", "Kertas", "noun"],["Question", "Pertanyaan", "noun"],["River", "Sungai", "noun"],["School", "Sekolah", "noun"],["Table", "Meja", "noun"],["University", "Universitas", "noun"],["Voice", "Suara", "noun"],["Window", "Jendela", "noun"],["Year", "Tahun", "noun"],["Answer", "Jawaban", "noun"],["Beautiful", "Cantik", "adjective"],["Clean", "Bersih", "adjective"],["Dangerous", "Berbahaya", "adjective"],["Easy", "Mudah", "adjective"],["Famous", "Terkenal", "adjective"],["Great", "Hebat", "adjective"],["Hot", "Panas", "adjective"],["Important", "Penting", "adjective"],["Large", "Besar", "adjective"],["New", "Baru", "adjective"],["Old", "Tua", "adjective"],["Poor", "Miskin", "adjective"],["Rich", "Kaya", "adjective"],["Small", "Kecil", "adjective"],["Tall", "Tinggi", "adjective"],["Ugly", "Buruk", "adjective"],["Wet", "Basah", "adjective"],["Young", "Muda", "adjective"],["Ask", "Bertanya", "verb"],["Buy", "Membeli", "verb"],["Cook", "Memasak", "verb"],["Drink", "Minum", "verb"],["Enjoy", "Menikmati", "verb"],["Find", "Menemukan", "verb"],["Give", "Memberi", "verb"],["Help", "Membantu", "verb"],["Invite", "Mengundang", "verb"],["Jump", "Melompat", "verb"],["Keep", "Menyimpan", "verb"],["Listen", "Mendengarkan", "verb"],["Make", "Membuat", "verb"],["Need", "Membutuhkan", "verb"],["Open", "Membuka", "verb"],["Play", "Bermain", "verb"],["Read", "Membaca", "verb"],["See", "Melihat", "verb"],["Talk", "Berbicara", "verb"],["Use", "Menggunakan", "verb"],["Visit", "Mengunjungi", "verb"],["Walk", "Berjalan", "verb"],["Write", "Menulis", "verb"],["Always", "Selalu", "adverb"],["Carefully", "Dengan hati-hati", "adverb"],["Everywhere", "Di mana-mana", "adverb"],["Fast", "Dengan cepat", "adverb"],["Here", "Di sini", "adverb"],["Loudly", "Dengan keras", "adverb"],["Never", "Tidak pernah", "adverb"],["Often", "Sering", "adverb"],["Quickly", "Dengan cepat", "adverb"],["Rarely", "Jarang", "adverb"],["Sometimes", "Kadang-kadang", "adverb"],["There", "Di sana", "adverb"],["Usually", "Biasanya", "adverb"],["Well", "Dengan baik", "adverb"],["Yesterday", "Kemarin", "adverb"]
     ];
 
     const vocabList = document.getElementById('vocabList');
@@ -788,8 +1093,6 @@
         `;
         vocabList.appendChild(item);
       });
-
-      // Show/hide load more button
       loadMoreBtn.style.display = filteredVocab.length < vocab.length && displayedVocab < vocab.length ? 'block' : 'none';
     }
 
@@ -815,7 +1118,6 @@
 
     renderList();
 
-    // Vocabulary Quiz
     const quizData = [
       { word: "apple", correct: "apel", options: ["apel", "jeruk", "pisang", "semangka"] },
       { word: "book", correct: "buku", options: ["meja", "kursi", "buku", "kertas"] },
@@ -842,7 +1144,8 @@
       questionEl.textContent = `What is the Indonesian meaning of "${q.word}"?`;
 
       optionsEl.innerHTML = '';
-      q.options.forEach(option => {
+      const shuffledOptions = shuffle([...q.options]);
+      shuffledOptions.forEach(option => {
         const btn = document.createElement('button');
         btn.textContent = option;
         btn.className = "bg-sky-100 hover:bg-sky-200 text-gray-800 py-3 rounded-lg transition font-medium";
@@ -868,7 +1171,6 @@
         feedbackEl.className = "bg-red-100 text-red-800 font-semibold py-2 px-4 rounded-lg";
       }
 
-      // Disable all buttons after answer
       document.querySelectorAll('#options button').forEach(btn => {
         btn.disabled = true;
         if (btn.textContent === correct) {
@@ -900,7 +1202,6 @@
       scoreEl.textContent = `Your final score: ${score} out of ${quizData.length}`;
       scoreEl.className = "text-xl font-bold text-center text-sky-700";
       
-      // Add restart button
       const restartBtn = document.createElement('button');
       restartBtn.textContent = "Try Again";
       restartBtn.className = "bg-sky-500 hover:bg-sky-600 text-white px-6 py-3 rounded-lg font-medium transition mt-4";
@@ -924,7 +1225,6 @@
 
     showQuestion();
 
-    // Grammar Quiz
     const grammarQuestions = [
       {
         question: "Choose the correct sentence:",
@@ -981,7 +1281,9 @@
       grammarQuestionEl.textContent = q.question;
 
       grammarOptionsEl.innerHTML = '';
-      q.options.forEach((opt, i) => {
+
+      const shuffledGrammarOptions = shuffle([...q.options]);
+      shuffledGrammarOptions.forEach((opt, i) => {
         const div = document.createElement('div');
         div.className = "flex items-start";
         div.innerHTML = `
@@ -1000,7 +1302,7 @@
 
     function checkGrammarAnswer() {
       const selected = document.querySelector('input[name="grammar"]:checked');
-      
+
       if (!selected) {
         grammarResultEl.textContent = "Please select an answer.";
         grammarResultEl.className = "text-amber-600 mt-4 font-semibold";
@@ -1018,20 +1320,24 @@
         grammarResultEl.className = "text-red-600 mt-4 font-semibold";
       }
 
+      grammarSubmitBtn.removeEventListener('click', checkGrammarAnswer);
+
       if (currentGrammarIndex < grammarQuestions.length - 1) {
         grammarSubmitBtn.textContent = "Next Question";
-        grammarSubmitBtn.onclick = nextGrammarQuestion;
+        grammarSubmitBtn.addEventListener('click', nextGrammarQuestion);
       } else {
         grammarSubmitBtn.textContent = "Finish Quiz";
-        grammarSubmitBtn.onclick = finishGrammarQuiz;
+        grammarSubmitBtn.addEventListener('click', finishGrammarQuiz);
       }
     }
 
     function nextGrammarQuestion() {
       currentGrammarIndex++;
       showGrammarQuestion();
+
       grammarSubmitBtn.textContent = "Submit Answer";
-      grammarSubmitBtn.onclick = checkGrammarAnswer;
+      grammarSubmitBtn.removeEventListener('click', nextGrammarQuestion);
+      grammarSubmitBtn.addEventListener('click', checkGrammarAnswer);
     }
 
     function finishGrammarQuiz() {
@@ -1060,10 +1366,8 @@
       grammarProgressFill.style.width = `${progress}%`;
       grammarProgressText.textContent = `${currentGrammarIndex + 1}/${grammarQuestions.length}`;
     }
-
     showGrammarQuestion();
 
-    // Conversation Practice
     const scenarios = [
       {
         question: "You walk into a coffee shop and see someone you know. What do you say?",
@@ -1150,7 +1454,6 @@
 
     renderScenario();
 
-    // Contact form validation
     const contactForm = document.getElementById('contactForm');
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
@@ -1167,48 +1470,33 @@
       
       let isValid = true;
       
-      // Reset errors
       nameError.classList.add('hidden');
       emailError.classList.add('hidden');
       messageError.classList.add('hidden');
       
-      // Validate name
       if (!nameInput.value.trim()) {
         nameError.classList.remove('hidden');
         isValid = false;
       }
-      
-      // Validate email
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailPattern.test(emailInput.value)) {
         emailError.classList.remove('hidden');
         isValid = false;
       }
-      
-      // Validate message
       if (!messageInput.value.trim()) {
         messageError.classList.remove('hidden');
         isValid = false;
       }
       
       if (isValid) {
-        // Show loading state
         submitText.classList.add('hidden');
         submitSpinner.classList.remove('hidden');
-        
-        // Simulate form submission
         setTimeout(() => {
-          // Hide loading state
           submitText.classList.remove('hidden');
           submitSpinner.classList.add('hidden');
-          
-          // Show success message
           successMessage.classList.remove('hidden');
-          
-          // Reset form
           contactForm.reset();
           
-          // Hide success message after 5 seconds
           setTimeout(() => {
             successMessage.classList.add('hidden');
           }, 5000);
@@ -1216,7 +1504,6 @@
       }
     });
 
-    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -1228,7 +1515,6 @@
             behavior: 'smooth'
           });
           
-          // Close mobile menu if open
           responsiveNav.classList.add('hidden');
           document.body.style.overflow = 'auto';
         }
