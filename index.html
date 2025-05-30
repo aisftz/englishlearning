@@ -1407,7 +1407,7 @@
 
     function renderScenario() {
       const scene = scenarios[currentScenario];
-      botLine.innerHTML = `<strong>Bot:</strong> ${scene.question}`;
+      botLine.innerHTML = `${scene.question}`;
 
       optionsContainer.innerHTML = scene.options.map((opt, i) => `
         <button onclick="chooseResponse(${i})" class="w-full bg-white border border-sky-200 hover:bg-sky-50 text-left p-4 rounded-lg transition flex items-center">
